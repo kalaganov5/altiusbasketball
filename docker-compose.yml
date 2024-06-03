@@ -7,25 +7,25 @@ services:
       - db_data:/var/lib/mysql
     restart: no
     environment:
-      MYSQL_ROOT_PASSWORD: e-bee
-      MYSQL_DATABASE: e-bee
-      MYSQL_USER: e-bee
-      MYSQL_PASSWORD: e-bee
+      MYSQL_ROOT_PASSWORD: altiusbasketball
+      MYSQL_DATABASE: altiusbasketball
+      MYSQL_USER: altiusbasketball
+      MYSQL_PASSWORD: altiusbasketball
 
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    image: wordpress:6.5.3-php8.3-apache
     ports:
       - "8000:80"
     restart: always
     volumes:
-      - ./e-bee:/var/www/html/wp-content/themes/e-bee
+      - ./altiusbasketball:/var/www/html/wp-content/themes/altiusbasketball
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: e-bee
-      WORDPRESS_DB_PASSWORD: e-bee
-      WORDPRESS_DB_NAME: e-bee
+      WORDPRESS_DB_USER: altiusbasketball
+      WORDPRESS_DB_PASSWORD: altiusbasketball
+      WORDPRESS_DB_NAME: altiusbasketball
 
 volumes:
   db_data: {}
